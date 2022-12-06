@@ -1,0 +1,95 @@
+<%- include('partials/head') %>
+<body>
+  <%- include('partials/header_nav'); %>
+
+  <main id="main">
+    <%- include('partials/breadcrumbs'); %>
+    <section id="contact" class="contact">
+      <div class="row justify-content-center" data-aos="fade-up">
+        <div class="col-lg-10">
+          <form
+            action="/user/add"
+            method="post"
+            id="sign_up_form"
+            role="form"
+            class="php-email-form"
+          >
+            <% if(query.err === 'uexist'){ %>
+            <div class="alert alert-danger" role="alert">
+              <b>WARNING!</b> Username already exist!
+            </div>
+            <%}%>
+            <div
+              class="alert alert-danger d-none"
+              role="alert"
+              id="warning_container"
+            ></div>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Your Name"
+                  required
+                  value="<%= query.name; %>"
+                />
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  id="email"
+                  placeholder="Your Email"
+                  value="<%= query.email; %>"
+                  required
+                />
+              </div>
+              <div class="form-group mt-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  id="username"
+                  placeholder="Username"
+                  value="<%= query.username; %>"
+                  required
+                />
+              </div>
+              <div class="col-md-6 mt-3 form-group">
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                  required
+                  onblur="compare_pass()"
+                />
+              </div>
+              <div class="col-md-6 form-group mt-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  name="confirmPass"
+                  id="confirmPass"
+                  placeholder="Confirm Password"
+                  required
+                  onblur="compare_pass()"
+                />
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- End Contact Section -->
+  </main>
+  <!-- End #main -->
+  <%- include('partials/footer'); %>
+</body>

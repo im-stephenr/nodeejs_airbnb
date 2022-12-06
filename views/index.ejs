@@ -1,0 +1,134 @@
+<%- include('partials/head') %>
+<body>
+  <%- include('partials/header_nav'); %>
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div
+      id="heroCarousel"
+      data-bs-interval="5000"
+      class="carousel slide carousel-fade"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner" role="listbox">
+        <% if(!isLoggedUser){ %>
+        <!-- Slide 1 -->
+        <div
+          class="carousel-item active"
+          style="background-image: url(assets/img/slide/slide-1.jpg)"
+        >
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>Welcome to <span>SRBNB</span></h2>
+              <p>
+                This is my Entry for Final Project
+                <b>Bayan Academy BPITECHVOC BACK-END 101</b>
+              </p>
+              <div class="text-center">
+                <a href="/signup" class="btn-get-started">Sign Up</a>
+                <a href="/login" class="btn-get-started">Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%}%>
+
+        <!-- Slide 2 -->
+        <div
+          class="carousel-item <%= (isLoggedUser) ? 'active' : ''; %>"
+          style="background-image: url(assets/img/slide/slide-2.jpg)"
+        >
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>SRBNB</h2>
+              <p>
+                Find vacation rentals, cabins, beach houses, unique homes and
+                experiences around the world - all made possible by hosts on
+                StephenR.
+              </p>
+              <div class="text-center">
+                <a href="#listing" class="btn-get-started">View Listing</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a
+        class="carousel-control-prev"
+        href="#heroCarousel"
+        role="button"
+        data-bs-slide="prev"
+      >
+        <span
+          class="carousel-control-prev-icon bx bx-left-arrow"
+          aria-hidden="true"
+        ></span>
+      </a>
+
+      <a
+        class="carousel-control-next"
+        href="#heroCarousel"
+        role="button"
+        data-bs-slide="next"
+      >
+        <span
+          class="carousel-control-next-icon bx bx-right-arrow"
+          aria-hidden="true"
+        ></span>
+      </a>
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+    </div>
+  </section>
+  <!-- End Hero -->
+
+  <main id="main">
+    <!-- ======= Portfolio Section ======= -->
+    <section id="listing" class="portfolio">
+      <div class="container">
+        <div class="col-lg-12 d-flex justify-content-center">
+          <h1>Listing</h1>
+        </div>
+        <div class="row portfolio-container" data-aos="fade-up">
+          <%let count=1;%> <% for(let data of listData){%>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img
+              src="https://picsum.photos/450?random=<%= count %>"
+              class="img-fluid"
+              alt=""
+            />
+            <div class="portfolio-info">
+              <h4><%= data.name %></h4>
+              <p><%= data.address %></p>
+              <p><b>₱ <%= data.price.toLocaleString('en-US') %></b></p>
+              <p><b>-<%= data.author %></b></p>
+              <sup>
+                <b>
+                  <i> <%= `${data.date.toLocaleDateString()}` %> </i>
+                </b>
+              </sup>
+              <a
+                href=""
+                data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link"
+                title="<%= data.description %>"
+                ><i class="bx bx-plus"></i
+              ></a>
+              <a
+                href="/listing/view/<%= data.id %>"
+                class="details-link"
+                title="More Details"
+                ><i class="bx bx-link"></i
+              ></a>
+            </div>
+          </div>
+          <%count++}%>
+        </div>
+      </div>
+    </section>
+    <!-- End Portfolio Section -->
+  </main>
+  <!-- End #main -->
+
+  <%- include('partials/footer'); %>
+</body>

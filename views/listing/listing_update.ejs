@@ -1,0 +1,65 @@
+<%- include('../partials/head') %>
+<body>
+  <%- include('../partials/header_nav'); %>
+  <main id="main">
+    <%- include('../partials/breadcrumbs'); %>
+    <section id="contact" class="contact">
+      <div class="row justify-content-center" data-aos="fade-up">
+        <div class="col-lg-10">
+          <form
+            action="<%= (data) ? `/listing/edit/${data._id}?_method=PUT` : '/listing/add' %>"
+            method="POST"
+            role="form"
+            class="php-email-form"
+          >
+            <input type="hidden" value="<%= isLoggedUser %>" name="author" />
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label>Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="name"
+                  placeholder="Name"
+                  required
+                  value="<%= data.name ? data.name : '' %>"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label>Price:</label>
+                <input
+                  type="number"
+                  name="price"
+                  min="1"
+                  class="form-control"
+                  id="price"
+                  placeholder="Price"
+                  required
+                  value="<%= data.price ? data.price : '' %>"
+                />
+              </div>
+              <div class="form-group mt-3">
+                <label>Description:</label>
+                <textarea class="form-control" name="description">
+<%= data.description ? data.description : '' %></textarea
+                >
+              </div>
+              <div class="form-group mt-3">
+                <label>Address:</label>
+                <textarea class="form-control" name="address">
+<%= data.address ? data.address : '' %></textarea
+                >
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- End #main -->
+  <%- include('../partials/footer'); %>
+</body>

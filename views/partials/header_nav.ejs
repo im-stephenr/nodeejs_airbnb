@@ -1,0 +1,88 @@
+<!-- ======= Top Bar ======= -->
+<section id="topbar" class="d-flex align-items-center">
+  <div
+    class="container d-flex justify-content-center justify-content-md-between"
+  >
+    <div class="contact-info d-flex align-items-center">
+      <i class="bi bi-envelope d-flex align-items-center"
+        ><a href="mailto:contact@example.com">imstephenr@gmail.com</a></i
+      >
+      <i
+        title="Obviously not my real number"
+        class="bi bi-phone d-flex align-items-center ms-4"
+        ><span>+63 905 000 0000</span></i
+      >
+    </div>
+    <div class="social-links d-none d-md-flex align-items-center">
+      <a href="#" onclick="return buttonNotAvailable()" class="twitter"
+        ><i class="bi bi-twitter"></i
+      ></a>
+      <a
+        href="https://www.facebook.com/imstephen/"
+        target="_blank"
+        class="facebook"
+        ><i class="bi bi-facebook"></i
+      ></a>
+      <a
+        href="https://www.instagram.com/im.stephenr/"
+        target="_blank"
+        class="instagram"
+        ><i class="bi bi-instagram"></i
+      ></a>
+      <a href="#" onclick="return buttonNotAvailable()" class="linkedin"
+        ><i class="bi bi-linkedin"></i
+      ></a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container d-flex justify-content-between">
+    <div class="logo">
+      <h1 class="text-light"><a href="/"> StephenR- </a></h1>
+    </div>
+
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li>
+          <a class="<%= pageTitle === 'Home' ? 'active' : ''; %>" href="/"
+            >Home</a
+          >
+        </li>
+        <% if(isLoggedUser){ %>
+        <li>
+          <a href="/listing">View My Listing</a>
+        </li>
+        <li>
+          <a href="/admin">Admin</a>
+        </li>
+        <li>
+          <a
+            onclick="if(!confirm('Are you sure you want to logout?')) return false;"
+            href="/logout"
+            >Logout</a
+          >
+        </li>
+
+        <% }else{ %>
+        <li>
+          <a
+            class="<%= pageTitle === 'Sign Up' ? 'active' : ''; %>"
+            href="/signup"
+            >Sign up</a
+          >
+        </li>
+        <li>
+          <a class="<%= pageTitle === 'Login' ? 'active' : ''; %>" href="/login"
+            >Login</a
+          >
+        </li>
+        <%}%>
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+    <!-- .navbar -->
+  </div>
+</header>
+<!-- End Header -->

@@ -1,0 +1,68 @@
+<%- include('partials/head') %>
+<body>
+  <%- include('partials/header_nav'); %>
+  <main id="main">
+    <%- include('partials/breadcrumbs'); %>
+    <div class="container">
+      <section id="about-us" class="about-us">
+        <div class="container">
+          <div class="row no-gutters">
+            <div
+              class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"
+              onclick="alert('Eh paano kung...');"
+              style="cursor: pointer"
+              data-aos="fade-right"
+            ></div>
+            <div
+              class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch"
+            >
+              <div class="content d-flex flex-column justify-content-center">
+                <h3 data-aos="fade-up">
+                  Hello there <b><%= userData.name %></b>
+                </h3>
+                <p data-aos="fade-up">You can now modify your own listing.</p>
+                <div class="row">
+                  <div class="col-md-6 icon-box" data-aos="fade-up">
+                    <i class="bx bx-plus"></i>
+                    <h4>Create</h4>
+                    <p>Add new list</p>
+                  </div>
+                  <div
+                    class="col-md-6 icon-box"
+                    data-aos="fade-up"
+                    data-aos-delay="100"
+                  >
+                    <i class="bx bx-receipt"></i>
+                    <h4>Read</h4>
+                    <p>View your created list</p>
+                  </div>
+                  <div
+                    class="col-md-6 icon-box"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    <i class="bx bx-pencil"></i>
+                    <h4>Update</h4>
+                    <p>Edit your list</p>
+                  </div>
+                  <div
+                    class="col-md-6 icon-box"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
+                  >
+                    <i class="bx bx-trash"></i>
+                    <h4>Delete</h4>
+                    <p>Remove data from your list</p>
+                  </div>
+                </div>
+              </div>
+              <!-- End .content-->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <!-- End #main -->
+  <%- include('partials/footer'); %>
+</body>

@@ -1,0 +1,65 @@
+<%- include('../partials/head') %>
+<body>
+  <%- include('../partials/header_nav'); %>
+  <main id="main">
+    <%- include('../partials/breadcrumbs'); %>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="listing" class="portfolio">
+      <div class="container">
+        <!-- 
+          This should be categories, if this is still commented, then it means I no longer have the time to add the function -sr
+          <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div> -->
+        <a href="/listing/add" class="btn btn-primary btn-md">
+          <i class="bx bx-plus"></i>
+          Add Listing
+        </a>
+        <br />
+        <p>
+          Note: Hover image to see details, click <i class="bx bx-link"></i> to
+          View Listing
+        </p>
+        <div class="row portfolio-container" data-aos="fade-up">
+          <%let count=1;%> <% for(let data of list_data){%>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img
+              src="https://picsum.photos/450?random=<%= count %>"
+              class="img-fluid"
+              alt=""
+            />
+            <div class="portfolio-info">
+              <h4><%= data.name %></h4>
+              <p><%= data.address %></p>
+              <p><b>₱ <%= data.price.toLocaleString('en-US') %></b></p>
+              <a
+                href="https://picsum.photos/450?random=<%= count %>"
+                data-gallery="portfolioGallery"
+                class="portfolio-lightbox preview-link"
+                title="<%= data.description %>"
+                ><i class="bx bx-plus"></i
+              ></a>
+              <a
+                href="/listing/view/<%= data.id %>"
+                class="details-link"
+                title="More Details"
+                ><i class="bx bx-link"></i
+              ></a>
+            </div>
+          </div>
+          <%count++}%>
+        </div>
+      </div>
+    </section>
+    <!-- End Portfolio Section -->
+  </main>
+  <!-- End #main -->
+  <%- include('../partials/footer'); %>
+</body>
